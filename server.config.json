@@ -1,0 +1,21 @@
+{
+  "include": "*",
+  "exclude": ["scripts", "phpStudy", "node_modules", "miscellaneous"],
+  "viteConfig": {
+    "port": 3000,
+    "host": true,
+    "vueuse": {
+      "https": true
+    },
+    "pnpm": {
+      "open": "/zh"
+    }
+  },
+  "homeViteConfig": {
+    "open": true
+  },
+  "childProcessConfig": {
+    "continueOnError": false,
+    "race": false
+  }
+}
