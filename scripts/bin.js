@@ -7,6 +7,7 @@ import serve from './command/serve.js'
 import pack from './command/pack.js'
 import { readJson } from './shared/index.js'
 import clean from './command/clean.js'
+import  splitFile  from './command/file-split.js'
 
 const { version, bin } = readJson(resolve(process.cwd(), 'package.json'))
 
@@ -43,5 +44,14 @@ program
   .description('根据 .gitignore 配置进行文件清理')
   .option('--stdout <file>', '将匹配到的 ignore 信息输入到文件')
   .action(clean)
+
+program
+  .command('split <file>')
+  .description('文件分割')
+  .option('--dir <directory>', '分割文件输出的目录', '.split')
+  .option('--size <size>', '分割后文件的大小（M）')
+  .option('--prefix [prefix]', '分割文件的前缀')
+  .option('--join-char', '拆分文件连接字符', '-')
+  .action(splitFile)
 
 program.parse(process.argv)
